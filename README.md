@@ -56,11 +56,11 @@ Prob_Z       % Final probability to indicate the probability of points in positi
 ```
 
 ## Parameters
-The parameters can be set in the following file:
+The parameters for the Multi-target eFUMI algorithm, which are stored as a MATLAB struct, can be set in the following file:
 
 ```MT_parameters.m```
 
-The parameters is a MATLAB structure with the following fields:
+The parameters options are:
 ```
 u                          % Weight used to trade off between residual error & volume terms, smaller = more weight on error
 changeThresh               % Stopping criterion, When change drops below this threshold the algorithm stops
@@ -128,38 +128,38 @@ __Plain Text:__
 __BibTex:__
 
 ```
-@misc{jiao2022,
+@misc{jiao2022mtefumi,
     author       = {Changzhe Jiao and Alina Zare},
     title        = {Multi-target Extended Functions of Multiple Instances},
     month        = {March},
     year         = {2022},
     version      = {1.0},
     url          = {https://github.com/GatorSense/MT_eFUMI}
-    }
+}
 ```
 ```
 @Article{jiao2015functions,
-Title            = {Functions of Multiple Instances for Learning Target Signatures},
-Author           = {Jiao, Changzhe and Zare, Alina},
-Journal          = {IEEE Trans. Geosci. Remote Sens.},
-Year             = {2015},
-Month            = {Aug.},
-Number           = {8},
-Pages            = {4670-4686},
-Volume           = {53},
-Doi              = {10.1109/TGRS.2015.2406334},
+    Title            = {Functions of Multiple Instances for Learning Target Signatures},
+    Author           = {Jiao, Changzhe and Zare, Alina},
+    Journal          = {IEEE Trans. Geosci. Remote Sens.},
+    Year             = {2015},
+    Month            = {Aug.},
+    Number           = {8},
+    Pages            = {4670-4686},
+    Volume           = {53},
+    Doi              = {10.1109/TGRS.2015.2406334},
 }
 ```
 ```
 @InProceedings{zare2015functions,
-Title            = {Functions of multiple instances for sub-pixel target characterization in hyperspectral imagery},
-Author           = {Zare, Alina and Jiao, Changzhe},
-Booktitle        = {Proc. SPIE 9472, Algorithms and Technologies for Multispectral, Hyperspectral, and Ultraspectral Imagery XXI},
-Year             = {2015},
-Month            = {May},
-Number           = {947212},
-Volume           = {9472},
-Doi              = {10.1117/12.2176889},
+    Title            = {Functions of multiple instances for sub-pixel target characterization in hyperspectral imagery},
+    Author           = {Zare, Alina and Jiao, Changzhe},
+    Booktitle        = {Proc. SPIE 9472, Algorithms and Technologies for Multispectral, Hyperspectral, and Ultraspectral Imagery XXI},
+    Year             = {2015},
+    Month            = {May},
+    Number           = {947212},
+    Volume           = {9472},
+    Doi              = {10.1117/12.2176889},
 }
 ```
 

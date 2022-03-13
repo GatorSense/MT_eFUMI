@@ -136,7 +136,7 @@ __BibTex:__
     Title            = {Multi-target Extended Functions of Multiple Instances},
     Month            = {March},
     Year             = {2022},
-    Version          = {1.0},
+    Version          = {1.0.0},
     Url              = {https://github.com/GatorSense/MT_eFUMI}
     Doi              = {10.5281/zenodo.6350685},
 }

@@ -12,11 +12,11 @@ Changzhe Jiao & Alina Zare. (2022, March 13). GatorSense/MT_eFUMI: Initial relea
 
 [![DOI](https://zenodo.org/badge/126838417.svg)](https://zenodo.org/badge/latestdoi/126838417)
 
-The associated papers are: 
+The associated papers for this repo are: 
 
-C. Jiao and A. Zare, [“Functions of Multiple Instances for Learning Target Signatures,”](https://faculty.eng.ufl.edu/machine-learning/2015/08/jiao2015functions/) IEEE Trans. Geosci. Remote Sens., vol. 53, pp. 4670-4686, Aug. 2015.
+- C. Jiao and A. Zare, [“Functions of Multiple Instances for Learning Target Signatures,”](https://faculty.eng.ufl.edu/machine-learning/2015/08/jiao2015functions/) IEEE Trans. Geosci. Remote Sens., vol. 53, pp. 4670-4686, Aug. 2015.
 
-A. Zare and C. Jiao, [“Functions of Multiple Instances for Sub-pixel Target Characterization in Hyperspectral Imagery,”](https://faculty.eng.ufl.edu/machine-learning/2015/05/zare2015functions/) in Proc. SPIE 9472, Algorithms and Technologies for Multispectral, Hyperspectral, and Ultraspectral Imagery XXI, 2015.
+- A. Zare and C. Jiao, [“Functions of Multiple Instances for Sub-pixel Target Characterization in Hyperspectral Imagery,”](https://faculty.eng.ufl.edu/machine-learning/2015/05/zare2015functions/) in Proc. SPIE 9472, Algorithms and Technologies for Multispectral, Hyperspectral, and Ultraspectral Imagery XXI, 2015.
 
 In this repository, we provide the papers and code for the Multi-target Extended Functions of Multiple Instances (Multi-target eFUMI) algorithm.
 
@@ -26,61 +26,55 @@ This code uses only standard MATLAB packages.
 
 ## Cloning
 
-To recursively clone this repository using Git to include the hyperspectral demo submodule use the following command:
+To recursively clone this repository using Git, use the following command:
 
-     git clone --recursive https://github.com/GatorSense/Multi-Target-MI-ACE_SMF.git
-
-## Demo and Example
-
-This code has two examples, exampleSimulate.m and examplePFT.m which mirrors experiments #1 and #3 in the paper. Both of these can be found in the exampleMain folder.
+```
+git clone --recursive https://github.com/GatorSense/MT_eFUMI.git
+```
 
 ## Main Functions
 
-Run the algorithm using the following function:
+The Multi-target eFUMI algorithm runs using the following function:
 
-```results = miTargets(data, parameters);```
+```[E, P, Prob_Z, E_initial,obj_func]=MT_eFUMI(Inputdata,labels,parameters);```
 
 
 ## Inputs
 
-    data.dataBags: cell list with positive and negative bags (1xNumBags). Each cell contains a single bag in the form a (numInstances x instanceDimensionality) matrix
-        * a positive bag should have at least one positive instance in it
-        * a negative bag should consist of all negative instances
+```
+% Inputs:
+%   Inputdata: hyperspectral image data, can be both in data cube and linear data, will be normalized later
+%   labels: binary the same size as input data, indicates positive bag with logical '1'
+%   parameters: struct - parameter structure which can be set using the EF_parameters() function
+```
 
-    data.labels: labels for dataBags (1xnumBags)
-        * the labels should be a row vector with labels corresponding to the 
-        * parameters.posLabel and parameters.negLabel where a posLabel corresponds
-        * to a positive bag and a negLabel corresponds to a negative bag.
-        * The index of the label should match the index of the bag in dataBags
-
-    parameters: call setParameters.m function to set parameters
-    
+## Outputs
+```
+% Outputs:
+%   E: Endmembers, d by M+1, M accounts for the number of background endmembers
+%   P: Proportion Values, M+1 by N
+%   Prob_Z: Final probability to indicate the probability of points in positive to be real target 
+```
 
 ## Parameters
 The parameters can be set in the following function:
 
-```setParameters.m```
+```MT_parameters.m```
 
 The parameters is a MATLAB structure with the following fields:
-1. methodFlag: Determine similarity method 
-     * 0: Spectral Match Filter (SMF)
-     * 1: Adaptive Cosine Estimator (ACE)
-2. numTargets: Number of initialized targets
-3. initType:  Set Initialization method used to obtain initalized targets
-     * 1: Searches all positive instances and greedily selects instances that maximize objective.  
-     * 2: K-Means clusters positive instances and greedily selects cluster centers that maximize objective.
-4. optimize: Determine whether to optimize target signatures
-     * 0: Do not optimize target signatures, only returns initialized targets
-     * 1: Optimize target signatures using MT MI
-5. maxIter: Max number of optimization iterations
-6. globalBackgroundFlag: Determines how the background mean and inverse covariance are calcualted
-     * 0: mean and cov calculated from all data (positive and negative data)
-     * 1: mean and cov calculated from only negative bags
-7. posLabel: Label used for positive bags
-8. negLabel: Label used for negative bags
-9. numClusters: Number of clusters used for K-Means (only affects if initType 2 used)
-10. alpha: Uniqueness term weight in objective function
-     * set to 0 if you do not want to use the term
+```
+parameters.u = 0.01;  %Weight used to trade off between residual error & volume terms, smaller = more weight on error
+    parameters.changeThresh = 1e-6; %Stopping criterion, When change drops below this threshold the algorithm stops
+    parameters.iterationCap = 500; %Iteration cap, used to stop the algorithm
+    parameters.Eps=1e-8; % Parameter used to diagonally load some matrices in the code
+    parameters.T=2;
+    parameters.M=3;% denote how many background endmembers there are
+    parameters.alpha=2; %coefficient of weight for points from positive bag
+    parameters.gammaconst=0.01;%Larger weight should mean fewer endmembers
+    parameters.flag_E=1;%0, don’t normalize E; 1, normalize E after each iteration when some criteria are satisfied; 2,norm E to 1
+    parameters.endmemberPruneThreshold=1e-8;%Prune E(:, i) when max(P(i, :))<this threshold
+    parameters.beta=50;%coefficient to scale the distance of current points to the space of background endmembers in calculating Prob_Z 
+```
 
 ## Inventory
 
@@ -158,8 +152,33 @@ month={July}
 }
 ```
 
+## License
 
-## <a name="Related Work"></a>Related Work
+This source code is licensed under the license found in the [`LICENSE`](LICENSE) file in the root directory of this source tree.
+
+This product is Copyright (c) 2019 W. Yu, W. Xu and A. Zare. All rights reserved.
+
+## Citing MIL U-NET
+If you use the MIL U-Net algorithm or code, please cite using the following reference entries.
+
+__Plain Text:__
+G. Yu, W. Xu and A. Zare, "Weakly Supervised Image Segmentation with Multiple Instance Learning Neural Networks," version 1.0, November, 2019.  Available: https://github.com/GatorSense/MIL_UNet
+
+__BibTex:__
+```
+@misc{yu2019mil_unet,
+    author       = {Guohao Yu and Weihuang Xu and Alina Zare},
+    title        = {Weakly Supervised Image Segmentation with Multiple Instance Learning Neural Networks},
+    month        = {Nov},
+    year         = {2019},
+    version      = {1.0},
+    url          = {https://github.com/GatorSense/MIL_UNet}
+    }
+```
+
+
+
+## Related Work
 
 Also check out our Multiple Instance Multi-Resolution Fusion (MIMRF) algorithm for multi-resolution fusion!
 
@@ -167,6 +186,16 @@ Also check out our Multiple Instance Multi-Resolution Fusion (MIMRF) algorithm f
 [[`arXiv`](https://arxiv.org/abs/1805.00930)]
 
 [[`GitHub Code Repository`](https://github.com/GatorSense/MIMRF)]
+
+## Further Questions
+
+For any questions, please contact:
+
+Alina Zare
+
+Email Address: azare@ece.ufl.edu
+
+University of Florida, Department of Electrical and Computer Engineering
 
 
 

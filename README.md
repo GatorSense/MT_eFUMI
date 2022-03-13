@@ -11,7 +11,7 @@ Changzhe Jiao & Alina Zare. (2022, March 13). GatorSense/MT_eFUMI: Initial relea
 
 [![DOI](https://zenodo.org/badge/126838417.svg)](https://zenodo.org/badge/latestdoi/126838417)
 
-The associated papers for this repo are: 
+The associated papers for this repository are: 
 
 - C. Jiao and A. Zare, [“Functions of Multiple Instances for Learning Target Signatures,”](https://faculty.eng.ufl.edu/machine-learning/2015/08/jiao2015functions/) IEEE Trans. Geosci. Remote Sens., vol. 53, pp. 4670-4686, Aug. 2015.
 
@@ -129,12 +129,12 @@ __BibTex:__
 
 ```
 @misc{jiao2022mtefumi,
-    author       = {Changzhe Jiao and Alina Zare},
-    title        = {Multi-target Extended Functions of Multiple Instances},
-    month        = {March},
-    year         = {2022},
-    version      = {1.0},
-    url          = {https://github.com/GatorSense/MT_eFUMI}
+    author           = {Changzhe Jiao and Alina Zare},
+    title            = {Multi-target Extended Functions of Multiple Instances},
+    month            = {March},
+    year             = {2022},
+    version          = {1.0},
+    url              = {https://github.com/GatorSense/MT_eFUMI}
 }
 ```
 ```

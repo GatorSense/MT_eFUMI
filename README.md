@@ -62,6 +62,7 @@ The parameters for the Multi-target eFUMI algorithm, which are stored as a MATLA
 
 The parameters options are:
 ```
+%% Parameters:
 u                          % Weight used to trade off between residual error & volume terms, smaller = more weight on error
 changeThresh               % Stopping criterion, When change drops below this threshold the algorithm stops
 iterationCap               % Iteration cap, used to stop the algorithm

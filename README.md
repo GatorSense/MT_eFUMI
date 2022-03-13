@@ -78,32 +78,32 @@ parameters.u = 0.01;  %Weight used to trade off between residual error & volume 
 
 ## Inventory
 
-* Note: some of the functions from the Hyperspectral_Data_Simulation are used to run the demo. Check out the repo here: [[`Hyperspectral_Data_Simulation Repository`](https://github.com/GatorSense/Hyperspectral_Data_Simulation)]
-
 ```
-https://github.com/GatorSense/Multi-Target-MI-ACE_SMF
+https://github.com/GatorSense/MT_eFUMI
 
 └── root dir
     ├── LICENSE  //MIT license
     ├── README.md  //this file
-    └── algorithm  //algorithm functions
-        ├── evalObjectiveFunction.m //evaluates the objective function given a candidate target signature
-        ├── evalObjectiveFunctionLookup.m //evaluates the objective function for initialization using a precomputed similarity matrix of data
-        ├── miTargets.m  //runs algorithm
-        ├── optimizeTargets.m  //optimizes target signatures
-        └── setParameters.m  //sets parameters for algorithm
-        └── detectors  //algorithm functions
-            ├── ace_det.m  //compute ACE
-            └── smf_det.m  //compute SMF
-    └── exampleMain  //template for your own development
-        ├── bagData.m  //template to bag data
-        ├── bagHyperspectral.m //code that bags example data
-        ├── example_data.csv // csv containing example hyperspectral data
-        ├── splitTrainTest.m // code that split example data into training and validation using KFold cross validation
-        ├── roc_example_results.fig //matlab figure displaying roc results from example data
-        └── examplePFT.m  //template to set up data and run algorithm
-        ├── parameters.m  //set parameters for simulation demo
-        └── exampleSimulate.m  //run simulation demo	        
+    └── code  //algorithm functions
+        ├── EF_initialization.m //Initialize endmember and proportion values
+        ├── EF_P_Update_no_constraint.m //Update proportions without constraints
+        ├── EF_reshape.m  //Reshape hyperspectral data cube MxNxd to dx(M*N)
+        ├── EF_viewresults.m  //Display proportion map
+        ├── EFKM_initialize.m  //Initialize endmembers and proportions with EFKM
+        ├── keep_E_update_P.m  //Solve for proportions given endmembers
+        ├── MT_Cond_Update.m  //Find change in objective function
+        ├── MT_E_Update.m  //Update proportions
+        ├── MT_eFUMI.m  //Main function for multi-target eFUMI
+        ├── MT_P_Update.m  //Update endmembers
+        ├── MT_parameters.m  //Parameter file for Multi-target eFUMI
+        ├── MT_Prob_Z_Update.m  //Updated Prob Z
+        ├── MT_VCA_initialize.m  //Initialize endmembers and proportions with VCA
+        ├── normalize.m  //Normalize the data to [0,1]
+        └── VCA.m  //Runs Vertex Component Analysis
+    └── papers  //associated publications
+        ├── Multi-eFUMI.pdf //SPIE conference publication
+        ├── MultiTargets_eFUMI_derivation.pdf //Mutlti-target eFUMI derivations
+        ├── jiao2015functions.pdf //IEEE TGRS paper
 ```
 
 

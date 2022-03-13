@@ -1,6 +1,5 @@
 # MT_eFUMI
-**Functions of multiple instances for sub-pixel target characterization
-in hyperspectral imagery**
+**Multi-target Extended Functions of Multiple Instances**
 
 _Changzhe Jiao and Alina Zare_
 
@@ -51,9 +50,9 @@ parameters   % Struct - Parameter structure which can be set using the EF_parame
 ## Outputs
 ```
 %% Outputs:
-E;        % Endmembers, d by M+1, M accounts for the number of background endmembers
-P;        % Proportion Values, M+1 by N
-Prob_Z;   % Final probability to indicate the probability of points in positive to be real target 
+E            % Endmembers, d by M+1, M accounts for the number of background endmembers
+P            % Proportion Values, M+1 by N
+Prob_Z       % Final probability to indicate the probability of points in positive to be real target 
 ```
 
 ## Parameters
@@ -63,17 +62,17 @@ The parameters can be set in the following file:
 
 The parameters is a MATLAB structure with the following fields:
 ```
-u;                         % Weight used to trade off between residual error & volume terms, smaller = more weight on error
-changeThresh;              % Stopping criterion, When change drops below this threshold the algorithm stops
-iterationCap;              % Iteration cap, used to stop the algorithm
-Eps;                       % Parameter used to diagonally load some matrices in the code
-T;                         % Iteration index
-M;                         % Denote how many background endmembers there are
-alpha;                     % Coefficient of weight for points from positive bag
-gammaconst;                % Larger weight should mean fewer endmembers
-flag_E;                    % 0, don’t normalize E; 1, normalize E after each iteration when some criteria are satisfied; 2,norm E to 1
-endmemberPruneThreshold;   % Prune E(:, i) when max(P(i, :))<this threshold
-beta;                      % Coefficient to scale the distance of current points to the space of background endmembers in calculating Prob_Z 
+u                          % Weight used to trade off between residual error & volume terms, smaller = more weight on error
+changeThresh               % Stopping criterion, When change drops below this threshold the algorithm stops
+iterationCap               % Iteration cap, used to stop the algorithm
+Eps                        % Parameter used to diagonally load some matrices in the code
+T                          % Iteration index
+M                          % Denote how many background endmembers there are
+alpha                      % Coefficient of weight for points from positive bag
+gammaconst                 % Larger weight should mean fewer endmembers
+flag_E                     % 0, don’t normalize E; 1, normalize E after each iteration when some criteria are satisfied; 2,norm E to 1
+endmemberPruneThreshold    % Prune E(:, i) when max(P(i, :))<this threshold
+beta                       % Coefficient to scale the distance of current points to the space of background endmembers in calculating Prob_Z 
 ```
 
 ## Inventory
@@ -129,42 +128,40 @@ __Plain Text:__
 __BibTex:__
 
 ```
-@misc{yu2019mil_unet,
-    author       = {Guohao Yu and Weihuang Xu and Alina Zare},
-    title        = {Weakly Supervised Image Segmentation with Multiple Instance Learning Neural Networks},
-    month        = {Nov},
-    year         = {2019},
+@misc{jiao2022,
+    author       = {Changzhe Jiao and Alina Zare},
+    title        = {Multi-target Extended Functions of Multiple Instances},
+    month        = {March},
+    year         = {2022},
     version      = {1.0},
-    url          = {https://github.com/GatorSense/MIL_UNet}
+    url          = {https://github.com/GatorSense/MT_eFUMI}
     }
 ```
 ```
-@ARTICLE{du2018multiple,
-author={X. Du and A. Zare},
-journal={IEEE Transactions on Geoscience and Remote Sensing},
-title={Multiple Instance Choquet Integral Classifier Fusion and Regression for Remote Sensing Applications},
-year={2018},
-volume={57},
-number={5},
-pages={2741-2753}, 
-month={May},
-doi={10.1109/TGRS.2018.2876687}
+@Article{jiao2015functions,
+Title            = {Functions of Multiple Instances for Learning Target Signatures},
+Author           = {Jiao, Changzhe and Zare, Alina},
+Journal          = {IEEE Trans. Geosci. Remote Sens.},
+Year             = {2015},
+Month            = {Aug.},
+Number           = {8},
+Pages            = {4670-4686},
+Volume           = {53},
+Doi              = {10.1109/TGRS.2015.2406334},
 }
 ```
 ```
-@INPROCEEDINGS{du2016multiple,
-author={X. Du and A. Zare and J. M. Keller and D. T. Anderson},
-booktitle={IEEE Congress on Evolutionary Computation (CEC)},
-title={Multiple Instance Choquet integral for classifier fusion},
-year={2016},
-volume={},
-number={},
-pages={1054-1061},
-doi={10.1109/CEC.2016.7743905},
-month={July}
+@InProceedings{zare2015functions,
+Title            = {Functions of multiple instances for sub-pixel target characterization in hyperspectral imagery},
+Author           = {Zare, Alina and Jiao, Changzhe},
+Booktitle        = {Proc. SPIE 9472, Algorithms and Technologies for Multispectral, Hyperspectral, and Ultraspectral Imagery XXI},
+Year             = {2015},
+Month            = {May},
+Number           = {947212},
+Volume           = {9472},
+Doi              = {10.1117/12.2176889},
 }
 ```
-
 
 ## Related Work
 

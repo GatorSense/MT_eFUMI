@@ -7,9 +7,9 @@ ___
 
 If you use this code, please cite it as:
 
-Changzhe Jiao & Alina Zare. (2022, March 13). GatorSense/MT_eFUMI: Initial release (Version v1.0). Zenodo. http://doi.org/10.5281/zenodo.3727217 
+Changzhe Jiao & Alina Zare. (2022, March 13). GatorSense/MT_eFUMI: Initial release (Version v1.0). Zenodo. http://doi.org/10.5281/zenodo.6350685 
 
-[![DOI](https://zenodo.org/badge/126838417.svg)](https://zenodo.org/badge/latestdoi/126838417)
+[![DOI](https://zenodo.org/badge/469464534.svg)](https://zenodo.org/badge/latestdoi/469464534)
 
 The associated papers for this repository are: 
 
@@ -42,6 +42,7 @@ The Multi-target eFUMI algorithm runs using the following function:
 
 ```
 %% Inputs:
+
 Inputdata    % Hyperspectral image data, can be both in data cube and linear data, will be normalized later
 labels       % Binary the same size as input data, indicates positive bag with logical '1'
 parameters   % Struct - Parameter structure which can be set using the EF_parameters() function
@@ -50,6 +51,7 @@ parameters   % Struct - Parameter structure which can be set using the EF_parame
 ## Outputs
 ```
 %% Outputs:
+
 E            % Endmembers, d by M+1, M accounts for the number of background endmembers
 P            % Proportion Values, M+1 by N
 Prob_Z       % Final probability to indicate the probability of points in positive to be real target 
@@ -63,6 +65,7 @@ The parameters for the Multi-target eFUMI algorithm, which are stored as a MATLA
 The parameters options are:
 ```
 %% Parameters:
+
 u                          % Weight used to trade off between residual error & volume terms, smaller = more weight on error
 changeThresh               % Stopping criterion, When change drops below this threshold the algorithm stops
 iterationCap               % Iteration cap, used to stop the algorithm
@@ -120,7 +123,7 @@ If you use the Multi-target eFUMI algorithm, please cite the following reference
 
 __Plain Text:__
 
-- Changzhe Jiao & Alina Zare. (2022, March 13). GatorSense/MT_eFUMI: Initial release (Version v1.0). Zenodo. http://doi.org/10.5281/zenodo.3727217 
+- Changzhe Jiao & Alina Zare. (2022, March 13). GatorSense/MT_eFUMI: Initial release (Version v1.0). Zenodo. http://doi.org/10.5281/zenodo.6350685 
 
 - C. Jiao and A. Zare, [“Functions of Multiple Instances for Learning Target Signatures,”](https://faculty.eng.ufl.edu/machine-learning/2015/08/jiao2015functions/) IEEE Trans. Geosci. Remote Sens., vol. 53, pp. 4670-4686, Aug. 2015.
 
@@ -129,13 +132,14 @@ __Plain Text:__
 __BibTex:__
 
 ```
-@misc{jiao2022mtefumi,
-    author           = {Changzhe Jiao and Alina Zare},
-    title            = {Multi-target Extended Functions of Multiple Instances},
-    month            = {March},
-    year             = {2022},
-    version          = {1.0},
-    url              = {https://github.com/GatorSense/MT_eFUMI}
+@Misc{jiao2022mtefumi,
+    Author           = {Changzhe Jiao and Alina Zare},
+    Title            = {Multi-target Extended Functions of Multiple Instances},
+    Month            = {March},
+    Year             = {2022},
+    Version          = {1.0},
+    Url              = {https://github.com/GatorSense/MT_eFUMI}
+    Doi              = {10.5281/zenodo.6350685},
 }
 ```
 ```

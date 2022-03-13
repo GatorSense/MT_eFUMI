@@ -3,6 +3,8 @@
 
 _Changzhe Jiao and Alina Zare_
 
+MATLAB implementation of Multi-target Extended Functions of Multiple Instances. This code was originally written by Changzhe Jiao. The development of the algorithm was overseen by Dr. Alina Zare. 
+
 ___
 
 If you use this code, please cite it as:
@@ -42,7 +44,6 @@ The Multi-target eFUMI algorithm runs using the following function:
 
 ```
 %% Inputs:
-
 Inputdata    % Hyperspectral image data, can be both in data cube and linear data, will be normalized later
 labels       % Binary the same size as input data, indicates positive bag with logical '1'
 parameters   % Struct - Parameter structure which can be set using the EF_parameters() function
@@ -51,7 +52,6 @@ parameters   % Struct - Parameter structure which can be set using the EF_parame
 ## Outputs
 ```
 %% Outputs:
-
 E            % Endmembers, d by M+1, M accounts for the number of background endmembers
 P            % Proportion Values, M+1 by N
 Prob_Z       % Final probability to indicate the probability of points in positive to be real target 
@@ -65,7 +65,6 @@ The parameters for the Multi-target eFUMI algorithm, which are stored as a MATLA
 The parameters options are:
 ```
 %% Parameters:
-
 u                          % Weight used to trade off between residual error & volume terms, smaller = more weight on error
 changeThresh               % Stopping criterion, When change drops below this threshold the algorithm stops
 iterationCap               % Iteration cap, used to stop the algorithm
